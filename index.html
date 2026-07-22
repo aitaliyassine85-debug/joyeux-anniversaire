@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Joyeux anniversaire mon amour ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Arial,Helvetica,sans-serif;
+color:white;
+padding:40px;
+
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url("images/love-couple-5120x3657-26509.jpg");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+}
+
+h1{
+
+text-align:center;
+font-size:45px;
+color:#ffd1dc;
+margin-bottom:15px;
+
+}
+
+.sousTitre{
+
+text-align:center;
+font-size:18px;
+margin-bottom:40px;
+
+}
+
+.galerie{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+
+}
+
+.carte{
+
+height:340px;
+perspective:1000px;
+cursor:pointer;
+
+}
+
+.carte-interieur{
+
+position:relative;
+width:100%;
+height:100%;
+transition:.8s;
+transform-style:preserve-3d;
+
+}
+
+.carte.retournee .carte-interieur{
+
+transform:rotateY(180deg);
+
+}
+
+.face{
+
+position:absolute;
+width:100%;
+height:100%;
+border-radius:20px;
+overflow:hidden;
+backface-visibility:hidden;
+
+}
+
+.face-avant{
+
+background-size:cover;
+background-position:center;
+border:2px solid rgba(255,255,255,.25);
+
+}
+
+.face-avant::after{
+
+content:"❤️ Clique ❤️";
+
+position:absolute;
+bottom:10px;
+right:10px;
+
+background:rgba(255,20,147,.75);
+
+padding:7px 12px;
+
+border-radius:20px;
+
+font-size:14px;
+
+}
+
+.face-arriere{
+
+transform:rotateY(180deg);
+
+background:rgba(99,16,79,.88);
+
+backdrop-filter:blur(8px);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:20px;
+
+text-align:center;
+
+font-size:19px;
+
+line-height:1.7;
+
+border:2px solid rgba(255,255,255,.25);
+
+}
+
+footer{
+
+margin-top:70px;
+
+text-align:center;
+
+font-size:20px;
+
+line-height:1.8;
+
+background:rgba(0,0,0,.45);
+
+padding:25px;
+
+border-radius:20px;
+
+}
+
+@media(max-width:700px){
+
+h1{
+
+font-size:32px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎂 Joyeux Anniversaire Mon Amour ❤️</h1>
+
+<p class="sousTitre">
+Clique sur chaque photo pour découvrir le souvenir qui se cache derrière. ❤️
+</p>
+
+<div class="galerie" id="galerie"></div>
+
+<footer>
+
+<p>
+Trois ans déjà… et pourtant chaque jour à tes côtés est encore plus beau que le précédent.
+</p>
+
+<p>
+Merci d'avoir rempli ma vie d'amour, de bonheur, de sourires et de magnifiques souvenirs.
+</p>
+
+<p>
+Tu es la plus belle personne que la vie m'ait offerte et je remercie Dieu chaque jour de t'avoir mise sur mon chemin.
+</p>
+
+<p>
+❤️ Je t'aime aujourd'hui, demain et pour toute ma vie. ❤️
+</p>
+
+</footer>
+
+<script>
+
+const souvenirs = [
+{
+    image: "images/WhatsApp Image 2026-07-22 at 18.10.59.jpeg",
+    message: "Ton sourire illumine chacune de mes journées. ❤️"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 18.58.22.jpeg",
+    message: " ❤️"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 19.01.17.jpeg",
+    message: "C'est la dernière photo de ma petite princesse 🥰"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 19.01.18.jpeg",
+    message: "Ma vie, je t'aime de tout mon cœur ❤️"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 19.01.19.jpeg",
+    message: "La première fois que j'ai vu mon trésor ❤️"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 19.01.20.jpeg",
+    message: "Cette photo me rappelle combien je t'aime ❤️"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 19.01.21.jpeg",
+    message: "C'est la première fois que ma petite fille part pour un court voyage. ❤️"
+},
+{
+    image: "images/WhatsApp Image 2026-07-22 at 20.47.19.jpeg",
+    message: "Merci pour ces trois merveilleuses années. Je t'aime aujourd'hui, demain et pour toujours. ❤️"
+}
+];
+const galerie=document.getElementById("galerie");
+
+souvenirs.forEach(s=>{
+
+const carte=document.createElement("div");
+
+carte.className="carte";
+
+carte.innerHTML=`
+
+<div class="carte-interieur">
+
+<div class="face face-avant"
+style="background-image:url('${s.image}')">
+</div>
+
+<div class="face face-arriere">
+
+${s.message}
+
+</div>
+
+</div>
+
+`;
+
+carte.onclick=()=>{
+
+carte.classList.toggle("retournee");
+
+};
+
+galerie.appendChild(carte);
+
+});
+
+</script>
+
+</body>
+</html>
